@@ -1,0 +1,225 @@
+/* ============================================================================
+   vibe.css – пол вкуса для «Вайб-сайта»
+   ----------------------------------------------------------------------------
+   Два слоя:
+     ТОКЕНЫ  – то, что меняем под бренд: 6 цветов, 2 шрифта. Остальное выводится.
+     МЕХАНИКА – то, что двигает движок ([data-v-*]). Не перекрашивать.
+   Всё завёрнуто в .v-page, чтобы не конфликтовать со стилями Тильды.
+   ========================================================================== */
+
+.v-page {
+  /* --- цвета: 6 ролей, один акцент ------------------------------------- */
+  --v-canvas:     #0b0c0e;   /* фон страницы (drift меняет его)            */
+  --v-surface:    #15171b;   /* всё, что приподнято над фоном              */
+  --v-ink:        #f2efe9;   /* основной текст                             */
+  --v-ink-soft:   #a09b93;   /* вторичный текст, тонированный, не серый    */
+  --v-accent:     #f2a93b;   /* ОДИН акцент                                */
+  --v-accent-ink: #14110b;   /* текст на акценте                           */
+
+  --v-hair: color-mix(in oklab, var(--v-ink) 14%, transparent);
+  --v-hair-strong: color-mix(in oklab, var(--v-ink) 26%, transparent);
+
+  /* --- шрифты: максимум две гарнитуры ----------------------------------- */
+  --v-font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --v-font-text: "Manrope", "Segoe UI", system-ui, sans-serif;
+
+  /* --- размерная шкала (плавная) ---------------------------------------- */
+  --v-t-xs:   clamp(0.75rem, 0.72rem + 0.15vw, 0.82rem);
+  --v-t-sm:   clamp(0.875rem, 0.84rem + 0.18vw, 0.95rem);
+  --v-t-base: clamp(1rem, 0.96rem + 0.22vw, 1.125rem);
+  --v-t-lg:   clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --v-t-xl:   clamp(1.6rem, 1.35rem + 1.2vw, 2.25rem);
+  --v-t-2xl:  clamp(2rem, 1.5rem + 2.4vw, 3.4rem);
+  --v-t-3xl:  clamp(2.6rem, 1.7rem + 4.2vw, 5rem);
+  --v-t-4xl:  clamp(3rem, 1.6rem + 6.4vw, 7rem);
+
+  --v-track-tight: -0.03em;
+  --v-track-normal: -0.005em;
+  --v-track-wide: 0.08em;
+
+  /* --- отступы (база 4px) ----------------------------------------------- */
+  --v-1: 0.25rem; --v-2: 0.5rem; --v-3: 0.75rem; --v-4: 1rem; --v-5: 1.5rem;
+  --v-6: 2rem; --v-7: 3rem; --v-8: 4rem; --v-9: 6rem; --v-10: 8rem;
+  --v-gutter: clamp(1.25rem, 4vw, 4rem);
+  --v-section: clamp(4rem, 10vw, 9rem);
+  --v-measure: 60ch;
+
+  /* --- глубина и движение ----------------------------------------------- */
+  --v-radius: 14px;
+  --v-shadow-color: 0 0 0;
+  --v-e1: 0 1px 2px rgb(var(--v-shadow-color) / .28), 0 6px 18px rgb(var(--v-shadow-color) / .22);
+  --v-e2: 0 2px 6px rgb(var(--v-shadow-color) / .3), 0 18px 48px rgb(var(--v-shadow-color) / .32);
+  --v-edge: inset 0 1px 0 color-mix(in oklab, var(--v-ink) 12%, transparent);
+  --v-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  background: var(--v-canvas);
+  color: var(--v-ink);
+  font-family: var(--v-font-text);
+  font-size: var(--v-t-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color .7s var(--v-ease-out);
+  overflow-x: clip;
+  position: relative;
+}
+
+/* ------------------------------------------------------------ база ------ */
+body:has(> .v-page) { margin: 0; }
+.v-page *, .v-page *::before, .v-page *::after { box-sizing: border-box; }
+.v-page h1, .v-page h2, .v-page h3, .v-page p, .v-page ul, .v-page figure { margin: 0; }
+.v-page ul { padding: 0; list-style: none; }
+.v-page img, .v-page video { display: block; max-width: 100%; height: auto; }
+.v-page a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.v-page ::selection { background: var(--v-accent); color: var(--v-accent-ink); }
+.v-page :focus-visible { outline: 2px solid var(--v-accent); outline-offset: 3px; border-radius: 3px; }
+.v-page button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+/* ------------------------------------------------------------ типографика */
+.v-display {
+  font-family: var(--v-font-display);
+  font-weight: var(--v-display-weight, 700);
+  line-height: 1.02;
+  letter-spacing: var(--v-track-tight);
+  text-wrap: balance;
+}
+.v-display--xl { font-size: var(--v-t-4xl); line-height: .96; }
+.v-display--lg { font-size: var(--v-t-3xl); }
+.v-display--md { font-size: var(--v-t-2xl); line-height: 1.06; }
+.v-display--sm { font-size: var(--v-t-xl); line-height: 1.1; }
+.v-lede { font-size: var(--v-t-lg); line-height: 1.4; max-width: 34ch; text-wrap: pretty; }
+.v-body { max-width: var(--v-measure); text-wrap: pretty; }
+.v-soft { color: var(--v-ink-soft); }
+.v-label {
+  font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide);
+  text-transform: uppercase; color: var(--v-ink-soft);
+}
+.v-nums { font-variant-numeric: tabular-nums; }
+@media (max-width: 700px) {
+  .v-display--xl { font-size: var(--v-t-2xl); line-height: 1.02; }
+  .v-display--lg { font-size: var(--v-t-xl); }
+}
+
+/* ------------------------------------------------------------ сетка ----- */
+.v-wrap { width: min(100% - 2 * var(--v-gutter), 76rem); margin-inline: auto; }
+.v-section { padding-block: var(--v-section); position: relative; }
+.v-section--tight { padding-block: calc(var(--v-section) * .5); }
+.v-stack { display: flex; flex-direction: column; gap: var(--v-5); }
+.v-stack > * + .v-display { margin-top: var(--v-4); }
+
+/* ------------------------------------------------------------ кнопки ---- */
+.v-btn {
+  display: inline-flex; align-items: center; gap: .6em;
+  padding: .95em 1.6em; border-radius: 999px;
+  font-weight: 600; font-size: var(--v-t-sm); letter-spacing: .01em;
+  text-decoration: none; white-space: nowrap;
+  background: var(--v-accent); color: var(--v-accent-ink);
+  box-shadow: var(--v-e1);
+  transition: transform .16s var(--v-ease-out), box-shadow .16s var(--v-ease-out), background-color .16s;
+  will-change: transform;
+}
+.v-page a.v-btn { color: var(--v-accent-ink); } /* иначе .v-page a { color: inherit } перебивает цвет текста кнопки */
+.v-page a.v-btn--ghost { color: var(--v-ink); }
+.v-btn:hover { box-shadow: var(--v-e2); }
+.v-btn:active { transform: scale(.97); }
+.v-btn--ghost {
+  background: transparent; color: var(--v-ink);
+  box-shadow: inset 0 0 0 1px var(--v-hair-strong);
+}
+.v-btn--ghost:hover { box-shadow: inset 0 0 0 1px var(--v-ink); }
+
+/* ============================================================ МЕХАНИКА == */
+
+/* Акты: закреплённая сцена держится на экране всё время своего пролёта */
+[data-v-act="pin"], [data-v-act="pan"] { position: relative; height: calc(var(--v-span, 2) * 100svh); }
+[data-v-stage] {
+  position: sticky; top: 0; height: 100svh; overflow: hidden;
+  display: block;
+}
+[data-v-act="flow"] { position: relative; }
+
+/* Слои и картинки на сцене */
+.v-fill { position: absolute; inset: 0; }
+.v-fill > img { width: 100%; height: 100%; object-fit: cover; }
+.v-layer { position: absolute; inset: 0; pointer-events: none; will-change: transform; }
+.v-layer > img { position: absolute; max-width: none; }
+
+/* Текст на сцене: три привязки */
+.v-copy { position: absolute; z-index: 3; max-width: min(46rem, 90vw); }
+.v-copy--lead { left: var(--v-gutter); bottom: clamp(3rem, 12vh, 9rem); }
+.v-copy--trail { right: var(--v-gutter); bottom: clamp(3rem, 12vh, 9rem); text-align: right; }
+.v-copy--center { left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; }
+.v-copy--top { left: var(--v-gutter); top: clamp(5rem, 14vh, 9rem); }
+
+/* Затемнение только там, где сидит текст: сосед текста, не его потомок */
+.v-scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.v-scrim--lead {
+  background: radial-gradient(120% 90% at 0% 100%, rgb(0 0 0 / .78) 0%, rgb(0 0 0 / .45) 38%, transparent 70%);
+}
+.v-scrim--trail {
+  background: radial-gradient(120% 90% at 100% 100%, rgb(0 0 0 / .78) 0%, rgb(0 0 0 / .45) 38%, transparent 70%);
+}
+.v-scrim--band {
+  background: linear-gradient(to top, rgb(0 0 0 / .82) 0%, rgb(0 0 0 / .5) 32%, transparent 62%);
+}
+.v-scrim--light { --s: 255 255 255; }
+.v-scrim--light.v-scrim--band {
+  background: linear-gradient(to top, rgb(var(--s) / .9) 0%, rgb(var(--s) / .55) 34%, transparent 62%);
+}
+@media (max-width: 860px) {
+  .v-copy--lead, .v-copy--trail { left: var(--v-gutter); right: var(--v-gutter); text-align: left; max-width: none; }
+  .v-scrim--lead, .v-scrim--trail {
+    background: linear-gradient(to top, rgb(0 0 0 / .82) 0%, rgb(0 0 0 / .5) 32%, transparent 62%);
+  }
+}
+
+/* Реплики: движок пишет opacity и transform */
+[data-v-cue] { will-change: opacity, transform; }
+[data-v-cue]:not(.v-cue-on) { pointer-events: none; }
+
+/* Кинетика: слова выезжают из-под маски; маска с запасом под хвосты букв */
+.v-k { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .14em; margin-bottom: -.14em; }
+.v-ki { display: inline-block; will-change: transform, opacity; }
+
+/* Шторка */
+[data-v-reveal] { will-change: clip-path; }
+
+/* Появление обычных секций: один раз, при входе */
+[data-v-in] > * { opacity: 0; transform: translateY(14px); transition: opacity .62s var(--v-ease-out), transform .62s var(--v-ease-out); transition-delay: calc(var(--v-i, 0) * var(--v-stagger, 70ms)); }
+[data-v-in].v-on > * { opacity: 1; transform: none; }
+[data-v-in][data-v-in-self] { opacity: 0; transform: translateY(14px); transition: opacity .62s var(--v-ease-out), transform .62s var(--v-ease-out); }
+[data-v-in][data-v-in-self] > * { opacity: 1; transform: none; transition: none; }
+[data-v-in][data-v-in-self].v-on { opacity: 1; transform: none; }
+
+/* Лента */
+[data-v-pan] { display: flex; gap: var(--v-6); width: max-content; will-change: transform; }
+
+/* Наклон и магнит */
+[data-v-tilt] { transform-style: preserve-3d; will-change: transform; }
+[data-v-magnet] { will-change: transform; }
+
+/* Полоса прогресса */
+[data-v-progress] { position: fixed; left: 0; top: 0; height: 2px; width: 100%; background: var(--v-accent); transform-origin: left; transform: scaleX(0); z-index: 50; pointer-events: none; }
+
+/* Зерно: плоский тёмный фон полосит на реальных экранах */
+.v-grain { position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: .045; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* Тач: лента листается пальцем, сцена не закрепляется */
+@media (pointer: coarse) {
+  .v-page [data-v-act="pan"] { height: auto; }
+  .v-page [data-v-act="pan"] [data-v-stage] { position: static; height: auto; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .v-page [data-v-act="pan"] [data-v-stage]::-webkit-scrollbar { display: none; }
+  .v-page [data-v-pan] { transform: none !important; }
+  .v-page [data-v-pan] > * { scroll-snap-align: start; }
+}
+
+/* Без анимаций: меньше и мягче, но не ноль */
+@media (prefers-reduced-motion: reduce) {
+  .v-page [data-v-cue], .v-page .v-ki { opacity: 1 !important; transform: none !important; }
+  .v-page [data-v-reveal] { clip-path: none !important; }
+  .v-page .v-layer { transform: none !important; }
+  .v-page [data-v-in] > * { opacity: 1; transform: none; transition: none; }
+  .v-page [data-v-act="pan"] [data-v-stage] { overflow-x: auto; }
+  .v-page [data-v-pan] { transform: none !important; }
+}
