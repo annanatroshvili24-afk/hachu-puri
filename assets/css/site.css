@@ -201,14 +201,13 @@ html { scroll-padding-top: 8.5rem; }
 /* --------------------------------------------------- шаги «как заказать» --- */
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--v-5); counter-reset: step; }
 .steps > li { display: flex; flex-direction: column; border-radius: var(--v-radius); background: var(--paper); overflow: hidden; box-shadow: var(--v-e1); }
-.steps__ph { aspect-ratio: 16 / 10; overflow: hidden; }
+.steps__ph { aspect-ratio: 4 / 3; overflow: hidden; }
 .steps__ph img { width: 100%; height: 100%; object-fit: cover; }
 .steps__txt { padding: var(--v-5); }
 .steps__n { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--v-accent); color: var(--v-accent-ink); font-family: var(--v-font-display); font-size: 1.7rem; font-weight: 700; margin-bottom: var(--v-3); }
 .steps h2, .steps h3 { font-family: var(--v-font-display); font-weight: 700; font-size: clamp(2rem, 1.6rem + 1.2vw, 2.6rem); line-height: .95; }
 .steps p { color: var(--v-ink-soft); margin-top: var(--v-3); font-size: var(--v-t-sm); }
-@media (max-width: 860px) { .steps { grid-template-columns: 1fr; } .steps > li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); } .steps__ph { aspect-ratio: auto; } .steps__txt { padding: var(--v-4); } }
-@media (max-width: 420px) { .steps > li { grid-template-columns: 1fr; } .steps__ph { aspect-ratio: 16 / 9; } }
+@media (max-width: 860px) { .steps { grid-template-columns: 1fr; } .steps > li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: var(--v-4); align-items: start; padding: var(--v-4); } .steps__ph { border-radius: 12px; } .steps__txt { padding: 0; } .steps__n { width: 2.25rem; height: 2.25rem; font-size: 1.4rem; margin-bottom: var(--v-2); } }
 
 .sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--v-4); margin-bottom: var(--v-6); }
 .sec-head p { color: var(--v-ink-soft); max-width: 40ch; }
