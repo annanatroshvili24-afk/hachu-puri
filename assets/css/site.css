@@ -136,9 +136,9 @@ html { scroll-padding-top: 8.5rem; }
 @media (max-width: 560px) {
   /* на телефоне – строка: фото слева, текст справа, как в бумажном меню */
   .grid { grid-template-columns: 1fr; gap: 0; }
-  .card { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: var(--v-4); padding-block: var(--v-4); border-bottom: 1px solid var(--v-hair); }
+  .card { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: var(--v-4); padding-block: var(--v-4); border-bottom: 1px solid var(--v-hair); }
   .card:first-child { border-top: 1px solid var(--v-hair); }
-  .card__ph { aspect-ratio: 1; border-radius: 14px; box-shadow: none; }
+  .card__ph { aspect-ratio: 4 / 3; align-self: start; border-radius: 12px; box-shadow: none; }
   .card__body { padding-top: 0; }
   .card h3 { font-size: 1.6rem; }
   .card__foot { padding-top: var(--v-3); }
@@ -385,4 +385,4 @@ html { scroll-padding-top: 8.5rem; }
 .foot__logo { display: block; height: 3.4rem; width: auto; }
 @media (max-width: 560px) { .bar__brand img { height: 2.5rem; } }
 /* верх тёмного финала повторяет контур вывески: ступень, большая вершина, ложбина, малая вершина */
-.final { --peak: clamp(2.2rem, 4vw, 3.5rem); margin-top: calc(var(--peak) * -.5); padding-top: calc(var(--v-section) + var(--peak)); clip-path: polygon(0 var(--peak), 16.6% calc(var(--peak) * .43), 49.8% 0, 73% calc(var(--peak) * .75), 83% calc(var(--peak) * .43), 100% var(--peak), 100% 100%, 0 100%); }
+.final { --peak: clamp(2.2rem, 4vw, 3.5rem); margin-top: clamp(3rem, 6vw, 5rem); padding-top: calc(var(--v-section) + var(--peak)); clip-path: polygon(0 var(--peak), 16.6% calc(var(--peak) * .43), 49.8% 0, 73% calc(var(--peak) * .75), 83% calc(var(--peak) * .43), 100% var(--peak), 100% 100%, 0 100%); }
