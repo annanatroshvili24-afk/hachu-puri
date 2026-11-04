@@ -55,43 +55,45 @@ html { scroll-padding-top: 8.5rem; }
 .cartbtn svg { width: 1.15rem; height: 1.15rem; }
 .cartbtn b { min-width: 1.4rem; height: 1.4rem; display: inline-grid; place-items: center; border-radius: 999px; background: var(--v-accent); color: var(--v-accent-ink); font-size: .78rem; font-weight: 600; }
 .cartbtn b:empty { display: none; }
-.v-page .burger { display: none; width: 2.75rem; height: 2.75rem; place-items: center; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--v-hair-strong); }
+.v-page .burger { display: none; width: 2.75rem; height: 2.75rem; place-items: center; border-radius: 999px; background: rgb(252 247 239 / .9); box-shadow: inset 0 0 0 1px var(--v-hair-strong); }
 .burger svg { width: 1.3rem; height: 1.3rem; }
 @media (max-width: 1080px) { .bar__tel { display: none; } }
 @media (max-width: 900px) {
   .v-page .burger { display: grid; }
   .bar { gap: var(--v-3); }
-  .bar nav { display: none; position: fixed; top: var(--bar-h); left: .75rem; right: .75rem; flex-direction: column; gap: 0; padding: .5rem; border-radius: 18px; background: var(--paper); box-shadow: var(--v-e2); font-size: var(--v-t-base); }
+  /* выпадающее меню всегда на плотной подложке: правило «прозрачный nav у прокрученной шапки» – только для компьютера */
+  .bar nav, .bar.is-scrolled nav, .bar--solid nav { display: none; position: fixed; top: var(--bar-h); left: .75rem; right: .75rem; z-index: 31; flex-direction: column; gap: 0; padding: .5rem; border-radius: 18px; background: var(--paper); box-shadow: var(--v-e2), 0 0 0 1px var(--v-hair); font-size: var(--v-t-base); }
   .bar nav a { padding: .85rem 1rem; border-radius: 12px; color: var(--v-ink); }
   .bar.is-open nav { display: flex; }
-  .bar.is-open { background: rgb(242 233 220 / .96); }
+  .bar.is-open { background: var(--v-canvas); -webkit-backdrop-filter: none; backdrop-filter: none; }
   .cartbtn { margin-left: auto; }
   .bar__brand small { display: none; }
 }
 @media (max-width: 380px) { .cartbtn__label { display: none; } }
 
-/* ------------------------------------------- первый экран: арка с хачапури --- */
-.hero { position: relative; min-height: min(100svh, 56rem); display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; padding: calc(var(--bar-h) + 2rem) var(--v-gutter) 3rem; max-width: 88rem; margin-inline: auto; }
-.hero h1 { font-size: min(clamp(3.2rem, 1.4rem + 5vw, 7rem), 13vh); line-height: .86; max-width: 14ch; text-wrap: balance; }
-.hero .v-lede { color: var(--v-ink-soft); margin-top: var(--v-5); max-width: 34ch; }
+/* ------------------------- первый экран: стол с блюдами сверху, как в исходном демо --- */
+.hero__back img { position: absolute; inset: -5% auto auto 0; width: 116%; height: 110%; object-fit: cover; object-position: 0% 50%; }
+.hero__copy { max-width: min(36rem, 40vw); bottom: auto; top: clamp(6.5rem, 20vh, 11rem); }
+.v-page .hero__copy h1 { font-size: min(clamp(3rem, 1.4rem + 3.8vw, 6rem), 10vh); text-wrap: balance; }
+.hero__copy .v-lede { color: var(--v-ink-soft); margin-top: var(--v-5); max-width: 32ch; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: var(--v-4) var(--v-5); align-items: center; margin-top: var(--v-6); }
-.hero__facts { display: flex; flex-wrap: wrap; gap: var(--v-2) var(--v-6); margin-top: var(--v-7); padding-top: var(--v-4); border-top: 1px solid var(--v-hair-strong); font-size: var(--v-t-sm); color: var(--v-ink-soft); max-width: 36rem; }
-.hero__facts b { display: block; color: var(--v-ink); font-weight: 500; }
-/* арка – фирменная рамка: как окна и балконы старого Тбилиси */
-.arch { position: relative; aspect-ratio: 1 / 1.08; border-radius: 999px 999px var(--v-radius) var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e2); }
-.arch img { position: absolute; inset: -6% 0 auto 0; width: 100%; height: 112%; object-fit: cover; }
-.hero__fig { position: relative; justify-self: end; width: min(100%, 33rem); }
-.hero__stamp { position: absolute; right: -1.2rem; bottom: -1.4rem; z-index: 2; padding: .85rem 1.1rem; border-radius: 14px; background: var(--forest); color: var(--paper); box-shadow: var(--v-e2); font-size: var(--v-t-sm); line-height: 1.35; max-width: 15rem; }
-.hero__stamp b { display: block; font-family: var(--v-font-display); font-size: 1.9rem; line-height: 1; }
+.hero__how { font-size: var(--v-t-sm); font-weight: 500; }
+.hero__facts { display: flex; flex-wrap: wrap; gap: .2rem var(--v-5); margin-top: var(--v-6); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+.hero__facts a { color: var(--v-ink); font-weight: 500; text-decoration: none; }
+/* светлая полоса под текстом – цвет фона сайта (крем под логотип) */
+.hero__band { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to right, rgb(242 233 220 / .9) 0%, rgb(242 233 220 / .66) 32%, transparent 48%); }
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; min-height: 0; gap: var(--v-6); padding-top: calc(var(--bar-h) + 1rem); }
-  .hero__fig { order: -1; justify-self: stretch; width: 100%; }
-  .arch { aspect-ratio: 5 / 4; border-radius: 999px 999px var(--v-radius) var(--v-radius) / 60% 60% var(--v-radius) var(--v-radius); }
-  .hero h1 { font-size: clamp(2.9rem, 1.6rem + 6vw, 4.2rem); }
-  .hero__stamp { left: auto; right: .8rem; bottom: -1.2rem; padding: .7rem .9rem; }
-  .hero__stamp b { font-size: 1.5rem; }
-  .hero__facts { margin-top: var(--v-6); }
+  .hero__back img { object-position: 50% 0%; inset: -4% 0 auto 0; width: 100%; }
+  .v-page .hero__copy h1 { font-size: clamp(2.7rem, 1.6rem + 5vw, 3.6rem); }
+  .hero__band { background: linear-gradient(to top, #f2e9dc 0%, #f2e9dc 40%, rgb(242 233 220 / .86) 52%, transparent 70%); }
+  .hero__copy { max-width: none; top: auto; bottom: 1.6rem; transform: none; }
+  .hero__copy .v-lede { font-size: var(--v-t-base); margin-top: var(--v-4); }
+  .hero__cta { margin-top: var(--v-5); }
+  .hero__facts { margin-top: var(--v-4); }
 }
+/* арка – рамка под фото заведения на «О нас» */
+.arch { position: relative; aspect-ratio: 1 / 1.08; border-radius: 999px 999px var(--v-radius) var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e2); }
+@media (max-width: 860px) { .arch { aspect-ratio: 5 / 4; border-radius: 999px 999px var(--v-radius) var(--v-radius) / 60% 60% var(--v-radius) var(--v-radius); } }
 
 /* ------------------------------------------------- шапка внутренних страниц --- */
 .page-head { padding: calc(var(--bar-h) + clamp(2rem, 5vw, 4rem)) 0 0; }
@@ -117,32 +119,62 @@ html { scroll-padding-top: 8.5rem; }
 .cat__head h2 { font-family: var(--v-font-display); font-weight: 700; font-size: clamp(2.6rem, 1.8rem + 2.4vw, 4rem); line-height: .9; }
 .cat__head span { color: var(--v-ink-soft); font-size: var(--v-t-sm); }
 .cat__all { margin-left: auto; font-size: var(--v-t-sm); font-weight: 500; }
-.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--v-6) var(--v-5); }
-@media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 860px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--v-5) var(--v-4); } }
 
-/* карточка блюда */
-.card { display: flex; flex-direction: column; min-width: 0; }
-.card__ph { display: block; position: relative; aspect-ratio: 4 / 3; border-radius: var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e1); }
-.card__ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--v-ease-out); }
-.card__body { display: flex; flex-direction: column; flex: 1; padding-top: var(--v-4); }
-.card h3 { font-family: var(--v-font-display); font-weight: 700; font-size: clamp(1.7rem, 1.4rem + .8vw, 2.1rem); line-height: .95; }
-.card h3 a { text-decoration: none; }
-.card h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
-.card p { color: var(--v-ink-soft); font-size: var(--v-t-sm); line-height: 1.45; margin-top: .45rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.card__meta { margin-top: .45rem; font-size: var(--v-t-xs); color: var(--v-ink-soft); }
-.card__foot { margin-top: auto; padding-top: var(--v-4); display: flex; align-items: center; justify-content: space-between; gap: var(--v-3); flex-wrap: wrap; }
-@media (hover: hover) and (pointer: fine) { .card__ph:hover img { transform: scale(1.04); } }
-@media (max-width: 560px) {
-  /* на телефоне – строка: фото слева, текст справа, как в бумажном меню */
-  .grid { grid-template-columns: 1fr; gap: 0; }
-  .card { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: var(--v-4); padding-block: var(--v-4); border-bottom: 1px solid var(--v-hair); }
-  .card:first-child { border-top: 1px solid var(--v-hair); }
-  .card__ph { aspect-ratio: 4 / 3; align-self: start; border-radius: 12px; box-shadow: none; }
-  .card__body { padding-top: 0; }
-  .card h3 { font-size: 1.6rem; }
-  .card__foot { padding-top: var(--v-3); }
-  .card .price { font-size: 1.5rem; }
+/* раздел: большое фото главного блюда + строки остальных (как в исходном демо) */
+.cat__body { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--v-6) clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.cat--flip .cat__body { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+.cat--flip .feat { order: 2; }
+.cat--wide .cat__body { grid-template-columns: 1fr; }
+.cat--wide .feat { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--v-6); align-items: end; }
+.cat--wide .rows { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(2rem, 5vw, 4.5rem); }
+.cat--wide .rows .row:nth-child(2) { border-top: 1px solid var(--v-hair); }
+.cat--plain .cat__body { grid-template-columns: 1fr 1fr; }
+
+/* фото блюд квадратные: круглая тарелка помещается целиком */
+.feat__ph { display: block; position: relative; aspect-ratio: 1 / 1; border-radius: var(--v-radius); overflow: hidden; box-shadow: var(--v-e1); background: var(--paper); }
+.feat__ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--v-ease-out); }
+.feat__txt { display: grid; grid-template-columns: 1fr auto; gap: .45rem var(--v-5); align-items: center; padding-top: var(--v-5); }
+.feat__txt h3, .feat__txt h2 { font-family: var(--v-font-display); font-weight: 700; font-size: clamp(2rem, 1.6rem + 1.2vw, 2.8rem); line-height: .95; }
+.feat__txt p { grid-column: 1; color: var(--v-ink-soft); max-width: 42ch; }
+.feat__txt .meta { grid-column: 1; }
+.feat__txt .buy { grid-column: 2; grid-row: 1 / span 3; flex-direction: row; align-items: center; gap: var(--v-4); }
+
+.row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--v-4); align-items: center; padding-block: var(--v-4); border-bottom: 1px solid var(--v-hair); }
+.row:first-child { border-top: 1px solid var(--v-hair); }
+.row__ph { display: block; position: relative; width: 5.5rem; height: 5.5rem; border-radius: 14px; overflow: hidden; background: var(--paper); }
+.row__ph img { width: 100%; height: 100%; object-fit: cover; }
+.row h3, .row h2 { font-weight: 600; font-size: var(--v-t-base); line-height: 1.3; }
+.row p { color: var(--v-ink-soft); font-size: var(--v-t-sm); line-height: 1.45; margin-top: .15rem; }
+.row .price { font-size: 1.45rem; }
+.v-page .row .add { width: 2.5rem; height: 2.5rem; }
+.v-page .row .step button { width: 2rem; height: 2rem; }
+.rows--2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(2rem, 5vw, 4.5rem); }
+.rows--2 .row:nth-child(2) { border-top: 1px solid var(--v-hair); }
+
+.feat a, .row a { text-decoration: none; }
+.feat h3 a:hover, .feat h2 a:hover, .row h3 a:hover, .row h2 a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .15em; }
+.buy { display: flex; flex-direction: column; align-items: flex-end; gap: .45rem; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem; margin-top: .35rem; font-size: var(--v-t-xs); color: var(--v-ink-soft); }
+@media (hover: hover) and (pointer: fine) { .feat__ph:hover img { transform: scale(1.03); } }
+
+@media (max-width: 860px) {
+  .cat { padding-top: var(--v-7); }
+  .cat__body, .cat--flip .cat__body, .cat--plain .cat__body { grid-template-columns: 1fr; gap: var(--v-5); }
+  .cat--flip .feat { order: 0; }
+  .cat--wide .feat { grid-template-columns: 1fr; gap: 0; }
+  .cat--wide .rows, .rows--2 { grid-template-columns: 1fr; }
+  .cat--wide .rows .row:nth-child(2), .rows--2 .row:nth-child(2) { border-top: 0; }
+  .cat--plain .rows + .rows .row:first-child { border-top: 0; }
+  .cat--plain .cat__body { gap: 0; }
+  .feat__txt h3, .feat__txt h2 { font-size: 1.95rem; }
+  .feat__txt { grid-template-columns: 1fr; }
+  .feat__txt .buy { grid-column: 1; grid-row: auto; justify-content: space-between; margin-top: var(--v-2); order: 2; }
+  .row__ph { width: 4.5rem; height: 4.5rem; border-radius: 12px; }
+}
+@media (max-width: 420px) {
+  /* узкий телефон: цена и «+» уходят под текст, чтобы название не сжималось */
+  .row { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .row .buy { grid-column: 2; flex-direction: row; justify-content: space-between; align-items: center; }
 }
 
 /* заглушка фото – пока у блюда нет снимка */
@@ -154,7 +186,6 @@ html { scroll-padding-top: 8.5rem; }
 .sizes { display: inline-flex; padding: .2rem; border-radius: 999px; background: rgb(58 36 22 / .07); }
 .v-page .sizes button { padding: .35rem .7rem; border-radius: 999px; font-size: var(--v-t-xs); font-weight: 600; color: var(--v-ink-soft); }
 .v-page .sizes button[aria-pressed="true"] { background: #fff; color: var(--v-ink); box-shadow: var(--v-e1); }
-.card .sizes { margin-top: var(--v-3); align-self: flex-start; }
 
 /* кнопка «+» и счётчик */
 .v-page .add { width: 2.75rem; height: 2.75rem; border-radius: 999px; display: grid; place-items: center; background: var(--v-accent); color: var(--v-accent-ink); box-shadow: var(--v-e1); transition: transform .16s var(--v-ease-out), box-shadow .16s var(--v-ease-out); }
@@ -173,8 +204,8 @@ html { scroll-padding-top: 8.5rem; }
 }
 
 /* ------------------------------------------------------- страница блюда --- */
-.dish { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; padding-top: calc(var(--bar-h) + 2rem); }
-.dish__ph { position: relative; aspect-ratio: 4 / 3; border-radius: var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e2); }
+.dish { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; padding-top: calc(var(--bar-h) + 2rem); }
+.dish__ph { position: relative; aspect-ratio: 1 / 1; border-radius: var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e2); }
 .dish__ph img { width: 100%; height: 100%; object-fit: cover; }
 .dish h1 { font-size: clamp(2.8rem, 1.8rem + 3vw, 4.8rem); }
 .dish__desc { margin-top: var(--v-4); color: var(--v-ink-soft); max-width: 42ch; }
@@ -201,7 +232,7 @@ html { scroll-padding-top: 8.5rem; }
 /* --------------------------------------------------- шаги «как заказать» --- */
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--v-5); counter-reset: step; }
 .steps > li { display: flex; flex-direction: column; border-radius: var(--v-radius); background: var(--paper); overflow: hidden; box-shadow: var(--v-e1); }
-.steps__ph { aspect-ratio: 4 / 3; overflow: hidden; }
+.steps__ph { aspect-ratio: 1 / 1; overflow: hidden; }
 .steps__ph img { width: 100%; height: 100%; object-fit: cover; }
 .steps__txt { padding: var(--v-5); }
 .steps__n { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--v-accent); color: var(--v-accent-ink); font-family: var(--v-font-display); font-size: 1.7rem; font-weight: 700; margin-bottom: var(--v-3); }
@@ -229,25 +260,20 @@ html { scroll-padding-top: 8.5rem; }
 .split p + p { margin-top: var(--v-4); }
 .prose p { color: var(--v-ink-soft); max-width: 52ch; }
 .prose h2 + p { margin-top: var(--v-5); }
-.mosaic { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(9rem, 16vw, 15rem); gap: var(--v-4); }
-.mosaic figure { position: relative; border-radius: var(--v-radius); overflow: hidden; background: var(--paper); }
+/* четыре фото одного размера и формата 4:3 – без узких и широких рядом */
+.mosaic { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--v-5); }
+@media (max-width: 1100px) { .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.mosaic figure { position: relative; aspect-ratio: 1 / 1; border-radius: var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e1); }
 .mosaic img { width: 100%; height: 100%; object-fit: cover; }
-.mosaic .m-a { grid-column: span 3; grid-row: span 2; }
-.mosaic .m-b { grid-column: span 3; }
-.mosaic .m-c, .mosaic .m-d { grid-column: span 3; }
 .mosaic figcaption, .atm figcaption { position: absolute; left: .8rem; bottom: .8rem; padding: .35rem .7rem; border-radius: 999px; background: rgb(252 247 239 / .92); font-size: var(--v-t-xs); font-weight: 500; }
 .atm { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--v-5); }
 .atm figure { display: flex; flex-direction: column; gap: var(--v-3); }
-.atm .ph { position: relative; aspect-ratio: 3 / 4; border-radius: var(--v-radius); overflow: hidden; }
+.atm .ph { position: relative; aspect-ratio: 4 / 3; border-radius: var(--v-radius); overflow: hidden; }
 .atm figure > p { font-size: var(--v-t-sm); color: var(--v-ink-soft); }
 @media (max-width: 860px) {
   .split { grid-template-columns: 1fr; gap: var(--v-6); }
-  .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 10rem; }
-  .mosaic .m-a { grid-column: span 2; grid-row: span 2; }
-  .mosaic .m-b { grid-column: span 2; }
-  .mosaic .m-c, .mosaic .m-d { grid-column: span 1; }
+  .mosaic { gap: var(--v-3); }
   .atm { grid-template-columns: 1fr; }
-  .atm .ph { aspect-ratio: 4 / 3; }
 }
 /* место под фото, которое пришлёт заказчик */
 .ph-slot { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: .6rem; padding: 1rem; text-align: center; color: var(--v-ink-soft); font-size: var(--v-t-sm); background: repeating-linear-gradient(135deg, rgb(58 36 22 / .05) 0 14px, transparent 14px 28px), var(--paper); box-shadow: inset 0 0 0 1.5px var(--v-hair-strong); border-radius: inherit; }
@@ -377,16 +403,16 @@ html { scroll-padding-top: 8.5rem; }
 .cookie { position: fixed; z-index: 40; left: 1rem; bottom: 1rem; width: min(100% - 2rem, 26rem); padding: 1rem 1.1rem; border-radius: 16px; background: var(--paper); box-shadow: var(--v-e2); font-size: var(--v-t-xs); color: var(--v-ink-soft); display: grid; gap: .7rem; }
 .cookie[hidden] { display: none; }
 .cookie .v-btn { justify-self: start; padding: .7em 1.2em; font-size: var(--v-t-sm); }
-@media (prefers-reduced-motion: reduce) { .ticket, .step, .cartbar.bump, .card__ph img { animation: none; transition: none; } }
+@media (prefers-reduced-motion: reduce) { .ticket, .step, .cartbar.bump, .feat__ph img { animation: none; transition: none; } }
 
 /* ------------------------------------------------ логотип и силуэт гор ---- */
-.bar__brand img { display: block; height: 2.9rem; width: auto; filter: drop-shadow(0 2px 4px rgb(58 36 22 / .18)); }
+/* вывеска-логотип лежит на «столе» как деревянная доска под хачапури: мягкая тень, как у блюд на фото */
+.bar__brand img { display: block; height: 3.1rem; width: auto; filter: drop-shadow(0 6px 10px rgb(58 36 22 / .16)) drop-shadow(0 1px 2px rgb(58 36 22 / .2)); }
 .foot__logo { display: block; height: 3.4rem; width: auto; }
 @media (max-width: 560px) { .bar__brand img { height: 2.5rem; } }
 /* верх тёмного финала повторяет контур вывески: ступень, большая вершина, ложбина, малая вершина */
 .final { --peak: clamp(2.2rem, 4vw, 3.5rem); margin-top: clamp(3rem, 6vw, 5rem); padding-top: calc(var(--v-section) + var(--peak)); clip-path: polygon(0 var(--peak), 16.6% calc(var(--peak) * .43), 49.8% 0, 73% calc(var(--peak) * .75), 83% calc(var(--peak) * .43), 100% var(--peak), 100% 100%, 0 100%); }
 
-/* фото первого экрана: рамка точно под кадр 4:3, хачапури виден целиком */
-.hero__ph { aspect-ratio: 4 / 3; border-radius: var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e2); }
-.hero__ph img { width: 100%; height: 100%; object-fit: cover; }
-.hero__fig { width: min(100%, 40rem); }
+/* фото в блоке «Где мы» на главной – правая часть того же стола */
+.where__ph { aspect-ratio: 4 / 3; border-radius: var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e2); }
+.where__ph img { width: 100%; height: 100%; object-fit: cover; object-position: 78% 60%; }
