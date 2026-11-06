@@ -19,8 +19,8 @@
 <link rel="preload" as="image" href="assets/img/hero-table-m.webp" media="(max-width: 860px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/img/hero-table.webp" media="(min-width: 861px)" fetchpriority="high">
 <link rel="icon" type="image/png" href="assets/img/icon.png">
-<link rel="stylesheet" href="assets/css/vibe.css">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/vibe.css?v=9f2c389f">
+<link rel="stylesheet" href="assets/css/site.css?v=0e981e6d">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Хачу Пури","servesCuisine":"Грузинская","telephone":"+7 906 416-45-85","openingHours":"Mo-Su 10:00-22:00","address":{"@type":"PostalAddress","addressLocality":"Волгодонск","streetAddress":"ул. Весенняя, 56","addressCountry":"RU"},"hasMenu":"menu"}</script>
 </head>
 <body data-root="">
@@ -55,7 +55,10 @@
             <a class="v-btn" href="#menu">Выбрать блюда</a>
             <a class="hero__how" href="kak-zakazat/">Как заказать</a>
           </div>
-          <p class="hero__facts"><span>Ежедневно, 10:00–22:00</span><span>доставка 60–90 минут</span><a href="tel:+79064164585">+7 906 416-45-85</a></p>
+          <div class="hero__facts">
+            <span><b>Ежедневно, 10:00–22:00</b>принимаем заказы</span>
+            <span><b>60–90 минут</b>среднее время доставки</span>
+          </div>
         </div>
       </div>
     </section>
@@ -128,7 +131,7 @@
               <div class="buy"><span class="price" data-price="khachapuri/po-imeretinski">600 ₽</span><span data-buy="khachapuri/po-imeretinski"><button class="add" type="button" data-add="khachapuri/po-imeretinski" aria-label="В корзину: Хачапури по-имеретински"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></span></div>
             </article></div></div>
         </section>
-        <section class="cat cat--wide" id="supy" data-cat="supy" aria-labelledby="h-supy">
+        <section class="cat " id="supy" data-cat="supy" aria-labelledby="h-supy">
           <div class="cat__head"><h2 id="h-supy">Супы</h2><a class="cat__all" href="menu/supy/">Весь раздел</a></div>
           <div class="cat__body"><article class="feat" data-v-in data-v-in-self>
             <a class="feat__ph" href="menu/supy/kharcho/" tabindex="-1" aria-hidden="true"><img src="assets/img/dish/supy-kharcho.webp" alt="Харчо" width="1024" height="1024" loading="lazy" decoding="async"></a>
@@ -156,7 +159,7 @@
               <div class="buy"><span class="price" data-price="supy/okroshka-na-matsoni">380 ₽</span><span data-buy="supy/okroshka-na-matsoni"><button class="add" type="button" data-add="supy/okroshka-na-matsoni" aria-label="В корзину: Окрошка на мацони"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></span></div>
             </article></div></div>
         </section>
-        <section class="cat " id="goryachie-blyuda" data-cat="goryachie-blyuda" aria-labelledby="h-goryachie-blyuda">
+        <section class="cat cat--flip" id="goryachie-blyuda" data-cat="goryachie-blyuda" aria-labelledby="h-goryachie-blyuda">
           <div class="cat__head"><h2 id="h-goryachie-blyuda">Горячие блюда</h2><a class="cat__all" href="menu/goryachie-blyuda/">Весь раздел</a></div>
           <div class="cat__body"><article class="feat" data-v-in data-v-in-self>
             <a class="feat__ph" href="menu/goryachie-blyuda/chkmeruli/" tabindex="-1" aria-hidden="true"><img src="assets/img/dish/goryachie-blyuda-chkmeruli.webp" alt="Чкмерули" width="1024" height="1024" loading="lazy" decoding="async"></a>
@@ -192,7 +195,7 @@
               <div class="buy"><span class="price" data-price="goryachie-blyuda/dolma">420 ₽</span><span data-buy="goryachie-blyuda/dolma"><button class="add" type="button" data-add="goryachie-blyuda/dolma" aria-label="В корзину: Долма"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></span></div>
             </article></div></div>
         </section>
-        <section class="cat cat--flip" id="salaty" data-cat="salaty" aria-labelledby="h-salaty">
+        <section class="cat " id="salaty" data-cat="salaty" aria-labelledby="h-salaty">
           <div class="cat__head"><h2 id="h-salaty">Салаты</h2><a class="cat__all" href="menu/salaty/">Весь раздел</a></div>
           <div class="cat__body"><article class="feat" data-v-in data-v-in-self>
             <a class="feat__ph" href="menu/salaty/tbilisi/" tabindex="-1" aria-hidden="true"><img src="assets/img/dish/salaty-tbilisi.webp" alt="Салат «Тбилиси»" width="1024" height="1024" loading="lazy" decoding="async"></a>
@@ -220,7 +223,7 @@
               <div class="buy"><span class="price" data-price="salaty/ovoshchnoy-po-gruzinski">320 ₽</span><span data-buy="salaty/ovoshchnoy-po-gruzinski"><button class="add" type="button" data-add="salaty/ovoshchnoy-po-gruzinski" aria-label="В корзину: Овощной салат по-грузински"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></span></div>
             </article></div></div>
         </section>
-        <section class="cat cat--wide" id="detskoe-menyu" data-cat="detskoe-menyu" aria-labelledby="h-detskoe-menyu">
+        <section class="cat cat--flip" id="detskoe-menyu" data-cat="detskoe-menyu" aria-labelledby="h-detskoe-menyu">
           <div class="cat__head"><h2 id="h-detskoe-menyu">Детское меню</h2><a class="cat__all" href="menu/detskoe-menyu/">Весь раздел</a></div>
           <div class="cat__body"><article class="feat" data-v-in data-v-in-self>
             <a class="feat__ph" href="menu/detskoe-menyu/frikadelki-s-pyure/" tabindex="-1" aria-hidden="true"><img src="assets/img/dish/detskoe-menyu-frikadelki-s-pyure.webp" alt="Фрикадельки с пюре" width="1024" height="1024" loading="lazy" decoding="async"></a>
@@ -368,7 +371,7 @@
               <div class="buy"><span class="price" data-price="smuzi/snikers">290 ₽</span><span data-buy="smuzi/snikers"><button class="add" type="button" data-add="smuzi/snikers" aria-label="В корзину: Смузи «Сникерс»"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></span></div>
             </article></div></div>
         </section>
-        <section class="cat cat--wide" id="kokteyli" data-cat="kokteyli" aria-labelledby="h-kokteyli">
+        <section class="cat " id="kokteyli" data-cat="kokteyli" aria-labelledby="h-kokteyli">
           <div class="cat__head"><h2 id="h-kokteyli">Коктейли</h2><span>0,3 или 0,5 л</span><a class="cat__all" href="menu/kokteyli/">Весь раздел</a></div>
           <div class="cat__body"><article class="feat" data-v-in data-v-in-self>
             <a class="feat__ph" href="menu/kokteyli/mokhito-s-granatovym-sokom/" tabindex="-1" aria-hidden="true"><img src="assets/img/dish/kokteyli-mokhito-s-granatovym-sokom.webp" alt="Мохито с гранатовым соком" width="1024" height="1024" loading="lazy" decoding="async"></a>
@@ -396,7 +399,7 @@
               <div class="buy"><span class="price" data-price="kokteyli/mango-slivki">300 ₽</span><span data-buy="kokteyli/mango-slivki"><button class="add" type="button" data-add="kokteyli/mango-slivki" aria-label="В корзину: Коктейль манго-сливки"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></span></div>
             </article></div></div>
         </section>
-        <section class="cat " id="morsy" data-cat="morsy" aria-labelledby="h-morsy">
+        <section class="cat cat--flip" id="morsy" data-cat="morsy" aria-labelledby="h-morsy">
           <div class="cat__head"><h2 id="h-morsy">Морсы</h2><span>0,33 л</span><a class="cat__all" href="menu/morsy/">Весь раздел</a></div>
           <div class="cat__body"><article class="feat" data-v-in data-v-in-self>
             <a class="feat__ph" href="menu/morsy/klyukva/" tabindex="-1" aria-hidden="true"><img src="assets/img/dish/morsy-klyukva.webp" alt="Морс клюквенный" width="1024" height="1024" loading="lazy" decoding="async"></a>
@@ -432,7 +435,7 @@
               <div class="buy"><span class="price" data-price="morsy/malina">190 ₽</span><span data-buy="morsy/malina"><button class="add" type="button" data-add="morsy/malina" aria-label="В корзину: Морс малиновый"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></span></div>
             </article></div></div>
         </section>
-        <section class="cat cat--flip" id="kofe" data-cat="kofe" aria-labelledby="h-kofe">
+        <section class="cat " id="kofe" data-cat="kofe" aria-labelledby="h-kofe">
           <div class="cat__head"><h2 id="h-kofe">Кофе</h2><a class="cat__all" href="menu/kofe/">Весь раздел</a></div>
           <div class="cat__body"><article class="feat" data-v-in data-v-in-self>
             <a class="feat__ph" href="menu/kofe/espresso/" tabindex="-1" aria-hidden="true"><img src="assets/img/dish/kofe-espresso.webp" alt="Эспрессо" width="1024" height="1024" loading="lazy" decoding="async"></a>
@@ -468,7 +471,7 @@
               <div class="buy"><span class="price" data-price="kofe/latte">320 ₽</span><span data-buy="kofe/latte"><button class="add" type="button" data-add="kofe/latte" aria-label="В корзину: Латте"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></span></div>
             </article></div></div>
         </section>
-        <section class="cat cat--wide" id="chay" data-cat="chay" aria-labelledby="h-chay">
+        <section class="cat cat--flip" id="chay" data-cat="chay" aria-labelledby="h-chay">
           <div class="cat__head"><h2 id="h-chay">Чай</h2><span>листовой, 900 мл</span><a class="cat__all" href="menu/chay/">Весь раздел</a></div>
           <div class="cat__body"><article class="feat" data-v-in data-v-in-self>
             <a class="feat__ph" href="menu/chay/chernyy-russkiy-les/" tabindex="-1" aria-hidden="true"><img src="assets/img/dish/chay-chernyy-russkiy-les.webp" alt="Чай чёрный «Русский лес»" width="1024" height="1024" loading="lazy" decoding="async"></a>
@@ -511,13 +514,13 @@
       <div class="v-wrap">
         <div class="sec-head"><h2 class="v-display v-display--md" id="how-h">Как заказать</h2><a href="kak-zakazat/">Подробнее о доставке и оплате</a></div>
         <ol class="steps"><li>
-          <div class="steps__ph"><img src="assets/img/dish/khinkali-svinina-govyadina.webp" alt="Хинкали со свининой и говядиной" width="1024" height="1024" loading="lazy" decoding="async"></div>
+          <div class="steps__ph"><img src="assets/img/step-1.webp" alt="Палец нажимает «+» у блюда в меню на экране телефона" width="1024" height="1024" loading="lazy" decoding="async"></div>
           <div class="steps__txt"><span class="steps__n" aria-hidden="true">1</span><h3>Выберите блюда</h3><p>Откройте меню, нажмите «+» у блюд – они попадут в корзину. Сумма считается сразу.</p></div>
         </li><li>
-          <div class="steps__ph"><img src="assets/img/dish/khachapuri-mini.webp" alt="Хачапури мини по-аджарски" width="1024" height="1024" loading="lazy" decoding="async"></div>
+          <div class="steps__ph"><img src="assets/img/step-2.webp" alt="Оформление заказа в телефоне, рядом банковская карта" width="1024" height="1024" loading="lazy" decoding="async"></div>
           <div class="steps__txt"><span class="steps__n" aria-hidden="true">2</span><h3>Оформите заказ</h3><p>В корзине проверьте блюда, оставьте имя, телефон и адрес, выберите время и способ оплаты.</p></div>
         </li><li>
-          <div class="steps__ph"><img src="assets/img/dish/goryachie-blyuda-chkmeruli.webp" alt="Чкмерули в сливочно-чесночном соусе" width="1024" height="1024" loading="lazy" decoding="async"></div>
+          <div class="steps__ph"><img src="assets/img/step-3.webp" alt="Курьер передаёт пакет с горячим заказом" width="1024" height="1024" loading="lazy" decoding="async"></div>
           <div class="steps__txt"><span class="steps__n" aria-hidden="true">3</span><h3>Получите заказ</h3><p>Привезём горячим по Волгодонску за 60–90 минут или приготовим к вашему приходу, если выберете самовывоз.</p></div>
         </li></ol>
       </div>
@@ -584,7 +587,7 @@
   </div>
 </div>
 <script src="assets/js/menu-data.js"></script>
-<script src="assets/js/vibe.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/vibe.js?v=ac1baaa9"></script>
+<script src="assets/js/app.js?v=f0fea53d"></script>
 </body>
 </html>

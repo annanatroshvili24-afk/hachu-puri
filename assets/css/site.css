@@ -50,8 +50,12 @@ html { scroll-padding-top: 8.5rem; }
 .bar nav a { text-decoration: none; color: var(--v-ink-soft); }
 .bar nav a:hover, .bar nav a[aria-current] { color: var(--v-ink); }
 .bar nav a[aria-current] { text-decoration: underline; text-decoration-color: var(--v-accent); text-decoration-thickness: 2px; text-underline-offset: .45em; }
-.bar__tel { font-size: var(--v-t-sm); font-weight: 500; text-decoration: none; white-space: nowrap; }
-.v-page .cartbtn { display: inline-flex; align-items: center; gap: .55rem; padding: .6rem 1rem; border-radius: 999px; background: var(--forest); color: var(--paper) !important; font-size: var(--v-t-sm); font-weight: 500; }
+/* телефон на той же светлой плашке, что и меню, – иначе на фото первого экрана его не видно */
+.bar__tel { padding: .55rem 1.1rem; border-radius: 999px; background: rgb(252 247 239 / .88); font-size: var(--v-t-sm); font-weight: 600; color: var(--v-ink); text-decoration: none; white-space: nowrap; }
+.bar.is-scrolled .bar__tel, .bar--solid .bar__tel { background: transparent; }
+/* «дерево» – текстура вывески-логотипа: кнопка корзины и выбранный раздел меню, белые буквы как на логотипе */
+.v-page { --wood: #8f5630 url("../img/wood.webp") center / cover; --wood-edge: inset 0 0 0 1px rgb(58 36 22 / .35), inset 0 1px 0 rgb(255 255 255 / .18), 0 2px 6px rgb(58 36 22 / .22); }
+.v-page .cartbtn { display: inline-flex; align-items: center; gap: .55rem; padding: .6rem 1rem; border-radius: 999px; background: var(--wood); box-shadow: var(--wood-edge); color: #fffaf3 !important; text-shadow: 0 1px 1px rgb(40 22 10 / .45); font-size: var(--v-t-sm); font-weight: 600; }
 .cartbtn svg { width: 1.15rem; height: 1.15rem; }
 .cartbtn b { min-width: 1.4rem; height: 1.4rem; display: inline-grid; place-items: center; border-radius: 999px; background: var(--v-accent); color: var(--v-accent-ink); font-size: .78rem; font-weight: 600; }
 .cartbtn b:empty { display: none; }
@@ -78,8 +82,9 @@ html { scroll-padding-top: 8.5rem; }
 .hero__copy .v-lede { color: var(--v-ink-soft); margin-top: var(--v-5); max-width: 32ch; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: var(--v-4) var(--v-5); align-items: center; margin-top: var(--v-6); }
 .hero__how { font-size: var(--v-t-sm); font-weight: 500; }
-.hero__facts { display: flex; flex-wrap: wrap; gap: .2rem var(--v-5); margin-top: var(--v-6); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
-.hero__facts a { color: var(--v-ink); font-weight: 500; text-decoration: none; }
+/* часы и время доставки – под линией, с отступом от кнопок, как в предыдущей версии */
+.hero__facts { display: flex; flex-wrap: wrap; gap: var(--v-3) var(--v-7); margin-top: var(--v-7); padding-top: var(--v-5); border-top: 1px solid var(--v-hair-strong); font-size: var(--v-t-sm); color: var(--v-ink-soft); max-width: 30rem; }
+.hero__facts b { display: block; color: var(--v-ink); font-weight: 500; }
 /* светлая полоса под текстом – цвет фона сайта (крем под логотип) */
 .hero__band { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to right, rgb(242 233 220 / .9) 0%, rgb(242 233 220 / .66) 32%, transparent 48%); }
 @media (max-width: 860px) {
@@ -89,7 +94,8 @@ html { scroll-padding-top: 8.5rem; }
   .hero__copy { max-width: none; top: auto; bottom: 1.6rem; transform: none; }
   .hero__copy .v-lede { font-size: var(--v-t-base); margin-top: var(--v-4); }
   .hero__cta { margin-top: var(--v-5); }
-  .hero__facts { margin-top: var(--v-4); }
+  .hero__facts { display: grid; grid-template-columns: auto 1fr; margin-top: var(--v-5); padding-top: var(--v-4); gap: var(--v-5); font-size: var(--v-t-xs); }
+  .hero__facts b { white-space: nowrap; font-size: var(--v-t-sm); }
 }
 /* арка – рамка под фото заведения на «О нас» */
 .arch { position: relative; aspect-ratio: 1 / 1.08; border-radius: 999px 999px var(--v-radius) var(--v-radius); overflow: hidden; background: var(--paper); box-shadow: var(--v-e2); }
@@ -110,7 +116,8 @@ html { scroll-padding-top: 8.5rem; }
 .chips__row { display: flex; gap: .5rem; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; }
 .chips__row::-webkit-scrollbar { display: none; }
 .chips a { flex: none; scroll-snap-align: start; padding: .55rem 1rem; border-radius: 999px; text-decoration: none; font-size: var(--v-t-sm); font-weight: 500; box-shadow: inset 0 0 0 1px var(--v-hair-strong); transition: background-color .18s var(--v-ease-out), color .18s var(--v-ease-out); }
-.chips a.is-on, .chips a[aria-current] { background: var(--forest); color: var(--paper); box-shadow: none; }
+.chips a { color: var(--v-ink); box-shadow: inset 0 0 0 1px rgb(143 86 48 / .45); }
+.chips a.is-on, .chips a[aria-current] { background: var(--wood); box-shadow: var(--wood-edge); color: #fffaf3; text-shadow: 0 1px 1px rgb(40 22 10 / .45); }
 @media (max-width: 860px) { .chips { margin-inline: calc(-1 * var(--v-gutter)); padding-inline: var(--v-gutter); } }
 
 /* ------------------------------------------------------------- меню ----- */
